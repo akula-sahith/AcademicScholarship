@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRSEC Scholarship Funding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2a520;
+            padding-bottom: 10px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            color: #333;
+        }
+
+        button {
+            background-color: #e2a520;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #cc8c1a;
+        }
+    </style>
+</head>
+<body>
+    <form id="fundingForm" action="prank2.html" onsubmit="return validateForm()">
+        <h1>Scholarship Funding Details</h1>
+
+        <label for="bank-name">Bank Name:</label>
+        <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name" required>
+
+        <label for="account-number">Account Number:</label>
+        <input type="text" id="account-number" name="account-number" placeholder="Enter your account number" required>
+
+        <label for="ifsc">IFSC Code:</label>
+        <input type="text" id="ifsc" name="ifsc" placeholder="Enter your bank's IFSC code" required>
+
+        <label for="confirm-email">Confirm Your E-mail:</label>
+        <input type="email" id="confirm-email" name="confirm-email" placeholder="Enter your email again" required>
+
+        <button type="submit">Confirm and Proceed</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const bankName = document.getElementById('bank-name').value.trim();
+            const accountNumber = document.getElementById('account-number').value.trim();
+            const ifsc = document.getElementById('ifsc').value.trim();
+            const confirmEmail = document.getElementById('confirm-email').value.trim();
+
+            if (!bankName || !accountNumber || !ifsc || !confirmEmail) {
+                alert("Please fill in all the required fields.");
+                return false;
+            }
+
+            if (accountNumber.length < 9 || accountNumber.length > 18) {
+                alert("Please enter a valid account number (9-18 digits).");
+                return false;
+            }
+
+            if (!/^[A-Za-z]{4}\d{7}$/.test(ifsc)) {
+                alert("Please enter a valid IFSC code.");
+                return false;
+            }
+
+            if (!/\S+@\S+\.\S+/.test(confirmEmail)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
